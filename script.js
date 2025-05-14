@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
             descricao: "Painel de macramê charmoso e estiloso. Agrega beleza e aconchego à decoração.",
             preco: 130.00,
             categoria: "paineis",
-            imagem: "assets/images/produtos/paineis/painelAllegra.jpg",
+            imagem: "assets/images/produtos/paineis/painelAllegra2.JPG",
             detalhes: "Altura: 54cm\nLargura: 37,5cm\nAlça para suporte: 33cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Barbante e madeira"
         },
     ];
