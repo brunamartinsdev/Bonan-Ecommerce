@@ -311,50 +311,56 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Configurar formulário de contato sem backend
-    function configurarFormContato() {
-        if (!formContato) return;
+  document.addEventListener("DOMContentLoaded", function() {
+    configurarFormContato();
+});
 
-        formContato.addEventListener('submit', function (e) {
-            e.preventDefault();
+function configurarFormContato() {
+    const formContato = document.getElementById('form-contato');
+    if (!formContato) return;
 
-            const form = e.target;
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const btnText = submitBtn.querySelector('#btn-text');
-            const btnLoading = submitBtn.querySelector('#btn-loading');
+    formContato.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-            // Mostra o spinner
-            btnText.classList.add('d-none');
-            btnLoading.classList.remove('d-none');
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const btnText = submitBtn.querySelector('#btn-text');
+        const btnLoading = submitBtn.querySelector('#btn-loading');
 
-            setTimeout(() => {
-                const formAction = "https://formsubmit.co/bonanartesanato@gmail.com";
+        // Mostra o spinner
+        btnText.classList.add('d-none');
+        btnLoading.classList.remove('d-none');
 
-                fetch(formAction, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
+        // Aguarda um tempo antes de enviar (simulando "loading")
+        setTimeout(() => {
+            const formAction = "https://formsubmit.co/bonanartesanato@gmail.com";
+
+            fetch(formAction, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = "obrigado.html"; // Página de obrigado
+                    } else {
+                        throw new Error('Erro ao enviar');
                     }
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            window.location.href = "obrigado.html"; // Página de obrigado
-                        } else {
-                            throw new Error('Erro ao enviar');
-                        }
-                    })
-                    .catch(error => {
-                        alert('Ocorreu um erro. Você pode nos enviar um WhatsApp diretamente!');
-                        console.error('Error:', error);
-                    })
-                    .finally(() => {
-                        btnText.classList.remove('d-none');
-                        btnLoading.classList.add('d-none');
-                    });
-            }, 1500);
-        });
-    }
+                .catch(error => {
+                    alert('Ocorreu um erro. Você pode nos enviar um WhatsApp diretamente!');
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    btnText.classList.remove('d-none');
+                    btnLoading.classList.add('d-none');
+                });
+        }, 1500);  // Simula o atraso antes de enviar
+    });
+}
+
 
     // Manipulação do z-index da navbar para o modal de frete
     if (modalFreteElement && navbar) {
