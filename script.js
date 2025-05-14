@@ -123,6 +123,15 @@ document.addEventListener("DOMContentLoaded", function () {
             imagem: "assets/images/produtos/bolsas/bolsaSandra.jpg",
             detalhes: "Altura: 25cm\nLargura: 22cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Fio de malha"
         },
+                {
+            id: 10,
+            nome: "Painél Allegra",
+            descricao: "Painel de macramê charmoso e estiloso. Agrega beleza e aconchego à decoração.",
+            preco: 130.00,
+            categoria: "paineis",
+            imagem: "assets/images/produtos/paineis/painelAllegra.jpg",
+            detalhes: "Altura: 54cm\nLargura: 37,5cm\nAlça para suporte: 33cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Barbante e madeira"
+        },
     ];
 
 
@@ -177,47 +186,47 @@ document.addEventListener("DOMContentLoaded", function () {
         const navbar = document.getElementById('navbar');
         const navbarZIndexOriginal = window.getComputedStyle(navbar).zIndex;
 
-// Event listener para abrir o modal de detalhes ao clicar no resultado da busca
-searchResults.addEventListener('click', function (e) {
-    const clickedElement = e.target.closest('[data-produto-id]');
-    if (clickedElement) {
-        const produtoId = clickedElement.getAttribute('data-produto-id');
+        // Event listener para abrir o modal de detalhes ao clicar no resultado da busca
+        searchResults.addEventListener('click', function (e) {
+            const clickedElement = e.target.closest('[data-produto-id]');
+            if (clickedElement) {
+                const produtoId = clickedElement.getAttribute('data-produto-id');
 
-        const navbar = document.getElementById('navbar');
+                const navbar = document.getElementById('navbar');
 
-        if (navbar) {
-            navbar.classList.add('navbar-modal-aberto-novo');
-            navbar.style.zIndex = '1049';
+                if (navbar) {
+                    navbar.classList.add('navbar-modal-aberto-novo');
+                    navbar.style.zIndex = '1049';
+                }
+
+                // Força a remoção de possíveis efeitos colaterais visuais
+                document.body.classList.remove('modal-open');
+                document.body.style.paddingRight = '';
+
+                abrirModalDetalhes(produtoId);
+
+                const modalSearch = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
+                if (modalSearch) {
+                    setTimeout(() => {
+                        modalSearch.hide();
+                    }, 100);
+                }
+            }
+        });
+
+        // Escuta o fechamento do modal de detalhes para limpar a navbar e body
+        const modalDetalhes = document.getElementById('detalhesProdutoModal');
+
+        if (modalDetalhes) {
+            modalDetalhes.addEventListener('hidden.bs.modal', function () {
+                const navbar = document.getElementById('navbar');
+                if (navbar) {
+                    navbar.classList.remove('navbar-modal-aberto-novo');
+                    navbar.style.zIndex = '';
+                }
+                document.body.style.paddingRight = '';
+            });
         }
-
-        // Força a remoção de possíveis efeitos colaterais visuais
-        document.body.classList.remove('modal-open');
-        document.body.style.paddingRight = '';
-
-        abrirModalDetalhes(produtoId);
-
-        const modalSearch = bootstrap.Modal.getInstance(document.getElementById('searchModal'));
-        if (modalSearch) {
-            setTimeout(() => {
-                modalSearch.hide();
-            }, 100);
-        }
-    }
-});
-
-// Escuta o fechamento do modal de detalhes para limpar a navbar e body
-const modalDetalhes = document.getElementById('detalhesProdutoModal');
-
-if (modalDetalhes) {
-    modalDetalhes.addEventListener('hidden.bs.modal', function () {
-        const navbar = document.getElementById('navbar');
-        if (navbar) {
-            navbar.classList.remove('navbar-modal-aberto-novo');
-            navbar.style.zIndex = '';
-        }
-        document.body.style.paddingRight = '';
-    });
-}
 
         function performSearch() {
             const term = searchInput.value.toLowerCase().trim();
