@@ -55,7 +55,7 @@
               <li><a class="dropdown-item nav-link" href="#categoria-bolsas" data-categoria="bolsas">Bolsas</a></li>
               <li><a class="dropdown-item nav-link" href="#categoria-cachepots" data-categoria="cachepots">Cachepots</a>
               </li>
-               <li><a class="dropdown-item nav-link" href="#categoria-paineis" data-categoria="paineis">Painéis</a>
+              <li><a class="dropdown-item nav-link" href="#categoria-paineis" data-categoria="paineis">Painéis</a>
               </li>
           </li>
         </ul>
@@ -242,13 +242,8 @@
       <h2 class="text-center mb-4" data-aos="fade-down" data-aos-delay="100">Contato</h2>
       <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6" data-aos="fade-up" data-aos-delay="200">
-          <!-- Formulário com FormSubmit -->
-          <form id="form-contato" action="https://formsubmit.co/bonanartesanato@gmail.com" method="POST">
-            <!-- Configurações ocultas -->
-            <input type="hidden" name="_next" value="https://bonanartes.com.br/obrigado.html">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none">
+          <!-- Formulário com Formspree -->
+          <form id="form-contato" action="https://formspree.io/f/xpwdkznk" method="POST">
 
             <!-- Campos do formulário -->
             <div class="mb-3">
@@ -278,11 +273,16 @@
                 Enviando...
               </span>
             </button>
+            <p id="mensagem-sucesso" class="text-success mt-3 d-none">Mensagem enviada com sucesso! Entraremos em
+              contato em breve 😊</p>
+            <p id="mensagem-erro" class="text-danger mt-3 d-none">Ocorreu um erro. Tente novamente ou entre em contato
+              pelo WhatsApp.</p>
           </form>
         </div>
       </div>
     </div>
   </section>
+
 
 
   <!-- Footer -->

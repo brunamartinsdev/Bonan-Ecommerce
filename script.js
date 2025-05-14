@@ -311,56 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-//   document.addEventListener("DOMContentLoaded", function() {
-//     configurarFormContato();
-// });
-
-// function configurarFormContato() {
-//     const formContato = document.getElementById('form-contato');
-//     if (!formContato) return;
-
-//     formContato.addEventListener('submit', function (e) {
-//         e.preventDefault();
-
-//         const form = e.target;
-//         const submitBtn = form.querySelector('button[type="submit"]');
-//         const btnText = submitBtn.querySelector('#btn-text');
-//         const btnLoading = submitBtn.querySelector('#btn-loading');
-
-//         // Mostra o spinner
-//         btnText.classList.add('d-none');
-//         btnLoading.classList.remove('d-none');
-
-//         // Aguarda um tempo antes de enviar (simulando "loading")
-//         setTimeout(() => {
-//             const formAction = "https://formsubmit.co/bonanartesanato@gmail.com";
-
-//             fetch(formAction, {
-//                 method: 'POST',
-//                 body: new FormData(form),
-//                 headers: {
-//                     'Accept': 'application/json'
-//                 }
-//             })
-//                 .then(response => {
-//                     if (response.ok) {
-//                         window.location.href = "obrigado.html"; // Página de obrigado
-//                     } else {
-//                         throw new Error('Erro ao enviar');
-//                     }
-//                 })
-//                 .catch(error => {
-//                     alert('Ocorreu um erro. Você pode nos enviar um WhatsApp diretamente!');
-//                     console.error('Error:', error);
-//                 })
-//                 .finally(() => {
-//                     btnText.classList.remove('d-none');
-//                     btnLoading.classList.add('d-none');
-//                 });
-//         }, 1500);  // Simula o atraso antes de enviar
-//     });
-// }
-
 
     // Manipulação do z-index da navbar para o modal de frete
     if (modalFreteElement && navbar) {
@@ -828,6 +778,50 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+
+    const form = document.getElementById("form-contato");
+    const btnText = document.getElementById("btn-text");
+    const btnLoading = document.getElementById("btn-loading");
+    const msgSucesso = document.getElementById("mensagem-sucesso");
+    const msgErro = document.getElementById("mensagem-erro");
+
+    if (!form) return;
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();  // Impede o comportamento padrão do formulário
+
+      btnText.classList.add("d-none");
+      btnLoading.classList.remove("d-none");
+
+      fetch("https://formspree.io/f/xpwdkznk", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      })
+        .then((response) => {
+          btnText.classList.remove("d-none");
+          btnLoading.classList.add("d-none");
+
+          if (response.ok) {
+            form.reset();
+            msgSucesso.classList.remove("d-none");
+            msgErro.classList.add("d-none");
+          } else {
+            throw new Error("Erro ao enviar");
+          }
+        })
+        .catch(() => {
+          btnText.classList.remove("d-none");
+          btnLoading.classList.add("d-none");
+          msgErro.classList.remove("d-none");
+          msgSucesso.classList.add("d-none");
+        });
+    });
+
+
+
+
 
     // Inicialização
     configurarBusca();
