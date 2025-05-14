@@ -123,9 +123,9 @@ document.addEventListener("DOMContentLoaded", function () {
             imagem: "assets/images/produtos/bolsas/bolsaSandra.jpg",
             detalhes: "Altura: 25cm\nLargura: 22cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Fio de malha"
         },
-                {
+        {
             id: 10,
-            nome: "Painél Allegra",
+            nome: "Painel Allegra",
             descricao: "Painel de macramê charmoso e estiloso. Agrega beleza e aconchego à decoração.",
             preco: 130.00,
             categoria: "paineis",
