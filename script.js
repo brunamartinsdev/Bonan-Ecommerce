@@ -130,8 +130,28 @@ document.addEventListener("DOMContentLoaded", function () {
             preco: 130.00,
             categoria: "paineis",
             imagem: "assets/images/produtos/paineis/painelAllegra2.JPG",
-            detalhes: "Altura: 54cm\nLargura: 37,5cm\nAlça para suporte: 33cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Barbante e madeira"
+            detalhes: "Altura: 54cm\nLargura: 37,5cm\nAlça: 33cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Barbante e madeira"
         },
+        {
+            id: 11,
+            nome: "Bolsa de Macramê 'ATENA'",
+            descricao: "Bolsa artesanal de macramê com porta moeda combinando. Um toque de estilo único.",
+            preco: 125.00,
+            categoria: "bolsas",
+            imagem: "assets/images/produtos/bolsas/bolsaAtena.JPG",
+            detalhes: "Altura: 27cm\nLargura: 26,5cm\nAlças: 42cm\nPorta Moedas: 9 x 12,5cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Fio de malha"
+        },
+        {
+            id: 12,
+            nome: "Bolsa de Macramê 'KALI'",
+            descricao: "Bolsa de macramê com alça de mão sofisticada e porta celular frontal prático.",
+            preco: 140.00,
+            categoria: "bolsas",
+            imagem: "assets/images/produtos/bolsas/bolsaKali.JPG",
+            detalhes: "Altura: 33cm\nLargura: 29,5cm\nAlças: 13,5 x 16,5cm\nPorta Celular: 20 x 12,5cm\nCores disponíveis: Personalizável (informa a cor no pedido)\nMaterial: Barbante"
+        },
+        
+
     ];
 
 
